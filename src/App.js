@@ -1,37 +1,32 @@
-import { useState } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+
+import MyNavbar from './layouts/MyNavbar';
+import Home from './pages/Home';
 
 import './App.css';
 
-import MyNavbar from './layouts/MyNavbar';
-import ProductCard from './components/ProductCard';
-
-import data from './data';
 
 
 function App() {
 
-  let [shoes] = useState(data);
-
-  let cardList = shoes.map((a, i) => {
-      return (
-        <ProductCard shoes={a} i={i+1} key={i} />
-      )
-    })
+  let css1 = {color: 'red'};
+  let css2 = {margin: '10px', color: 'black'};
 
   return (
     <div className="App">
       {/* Navbar */}
       <MyNavbar></MyNavbar>
 
-      {/* Main Background Image */}
-      <div className="main-bg"/>
+      <Link to='/' style={ css1 } >renine94's Shop</Link>
+      <Link to='/detail' style={ css2 } >detail</Link>
+      <Link to='/about'>about</Link>
 
-      {/* 상품카드 목록 */}
-      <div className='container'>
-        <div className='row'>
-          {cardList}
-        </div>
-      </div>
+      {/* Router */}
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/detail' element={<div>detail</div>} />
+        <Route path='/about' element={<div>about</div>} />
+      </Routes>
 
     </div>
   );
