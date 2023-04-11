@@ -1,31 +1,35 @@
+import { useState } from 'react';
+
 import './App.css';
+
 import MyNavbar from './layouts/MyNavbar';
+import ProductCard from './components/ProductCard';
+
+import data from './data';
 
 
 function App() {
+
+  let [shoes] = useState(data);
+
+  let cardList = shoes.map((a, i) => {
+      return (
+        <ProductCard shoes={a} i={i+1} key={i} />
+      )
+    })
+
   return (
     <div className="App">
+      {/* Navbar */}
       <MyNavbar></MyNavbar>
 
+      {/* Main Background Image */}
       <div className="main-bg"/>
 
+      {/* 상품카드 목록 */}
       <div className='container'>
         <div className='row'>
-          <div className='col-md-4'>
-            <img src={process.env.PUBLIC_URL + '/logo192.png'}  width="80%" alt='shose1' />
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
-          <div className='col-md-4'>
-            <img src='https://codingapple1.github.io/shop/shoes2.jpg'  width="80%" alt='shose2' />
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
-          <div className='col-md-4'>
-            <img src='https://codingapple1.github.io/shop/shoes3.jpg'  width="80%" alt='shose3' />
-            <h4>상품명</h4>
-            <p>상품설명</p>
-          </div>
+          {cardList}
         </div>
       </div>
 
