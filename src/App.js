@@ -1,33 +1,32 @@
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 
-import MyNavbar from './layouts/MyNavbar';
-import Home from './pages/Home';
+import MyNavbar from "./layouts/MyNavbar";
 
-import './App.css';
+import Home from "./pages/Home";
+import Detail from "./pages/Detail";
+import About from "./pages/About";
+import AboutMember from "./pages/AboutMember";
 
-
+import "./App.css";
 
 function App() {
-
-  let css1 = {color: 'red'};
-  let css2 = {margin: '10px', color: 'black'};
-
   return (
     <div className="App">
       {/* Navbar */}
       <MyNavbar></MyNavbar>
 
-      <Link to='/' style={ css1 } >renine94's Shop</Link>
-      <Link to='/detail' style={ css2 } >detail</Link>
-      <Link to='/about'>about</Link>
-
       {/* Router */}
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/detail' element={<div>detail</div>} />
-        <Route path='/about' element={<div>about</div>} />
-      </Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/detail" element={<Detail />} />
 
+        <Route path="/about" element={<About />}>
+          <Route path="member" element={<AboutMember />} />
+          <Route path="location" element={<About />} />
+        </Route>
+
+        <Route path="*" element={<h2>404 Not Found</h2>} />
+      </Routes>
     </div>
   );
 }
