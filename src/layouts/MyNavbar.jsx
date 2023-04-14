@@ -13,8 +13,8 @@ const MyNavbar = () => {
       <Container>
         <Navbar.Brand onClick={() => { navigate('') }} href="/">renine94's Shop</Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link onClick={() => { navigate('/detail') }} href="/detail">detail</Nav.Link>
-          <Nav.Link onClick={() => { navigate('/about')}} href="/about">about</Nav.Link>
+          <Nav.Link onClick={() => { navigate('/detail') }}>detail</Nav.Link>
+          <Nav.Link onClick={() => { navigate('/about')}}>about</Nav.Link>
         </Nav>
       </Container>
     </Navbar>

@@ -1,13 +1,9 @@
-import { useState } from 'react';
-
 import ProductCard from '../components/ProductCard';
 
-import data from '../data';
 
+const Home = (props) => {
 
-const Home = () => {
-
-  let [shoes] = useState(data);
+  let shoes = props.shoes;
 
   let cardList = shoes.map((a, i) => {
       return (
