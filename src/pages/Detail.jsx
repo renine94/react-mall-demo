@@ -1,8 +1,16 @@
 import { useParams } from "react-router-dom";
 
+import styled from "styled-components";
+
+
+let Btn = styled.button`
+  background: ${ props => props.bg };
+  color: ${ props => ["blue", "purple"].includes(props.bg) ? 'white' : 'black' };
+  padding: 10px;
+`
+
 const Detail = (props) => {
   let { id } = useParams();
-
   let shoe = props.shoes.find(item => item.id === id-1);
 
   // 상품이 없으면
@@ -14,6 +22,8 @@ const Detail = (props) => {
 
   return (
     <div className="container">
+      {/* <Btn bg="yellow">버튼</Btn>
+      <Btn bg="blue">버튼</Btn> */}
       <div className="row">
         <div className="col-md-6">
           <img src={`https://codingapple1.github.io/shop/shoes${id}.jpg`} width="100%" alt={id}/>
