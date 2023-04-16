@@ -52,7 +52,6 @@ const Detail = (props) => {
     watched = new Set(watched);
     watched = Array.from(watched);
     localStorage.setItem('watched', JSON.stringify(watched));
-
   }, []);
 
   useEffect(() => {
