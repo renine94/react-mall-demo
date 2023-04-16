@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+
+import { addCartItems } from "./../store"
 
 
 let Btn = styled.button`
@@ -40,6 +43,9 @@ const Detail = (props) => {
   let [num, setNum] = useState('');
   let [tab, setTab] = useState(0);
   let [fade, setFade] = useState('');
+  let state = useSelector(state => state)
+  let dispatch = useDispatch()
+  console.log(state);
 
   useEffect(() => {
       setTimeout(() => { setFade('end') }, 100);
@@ -75,7 +81,6 @@ const Detail = (props) => {
     }
   }, [num])
 
-
   // 상품이 없으면
   if (!shoe) {
     return (
@@ -105,7 +110,12 @@ const Detail = (props) => {
           <h4 className="pt-5">{shoe.title}</h4>
           <p>{shoe.content}</p>
           <p>{shoe.price}원</p>
-          <button className="btn btn-danger">주문하기</button> 
+          <button 
+            className="btn btn-danger" 
+            onClick={() => { dispatch(addCartItems({id: shoe.id, name: shoe.title, count: 1})) }}
+          >
+            장바구니 담기
+          </button> 
         </div>
       </div>
 

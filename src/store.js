@@ -18,10 +18,18 @@ let cartItems = createSlice({
     addCount(state, action) {
       let item = state.find(item => item.id === action.payload);
       item.count += 1;
+    },
+    addCartItems(state, action) {
+      let existItem = state.find(item => item.id === action.payload.id);
+      if (existItem) {
+        existItem.count += 1;
+      } else {
+        state.push(action.payload);
+      }
     }
   }
 })
-export let { addCount } = cartItems.actions
+export let { addCount, addCartItems } = cartItems.actions
 
 
 export default configureStore({
