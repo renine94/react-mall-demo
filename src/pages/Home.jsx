@@ -1,19 +1,23 @@
-import ProductCard from '../components/ProductCard';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
-import { useState } from 'react';
+
+import ProductCard from '../components/ProductCard';
 
 
 const Home = (props) => {
   let [shoes, setShoes] = useState(props.shoes);
   let [clickCount, setClickCount] = useState(2);
+  let navigate = useNavigate();
 
   let cardList = shoes.map((a, i) => {
       return (
         <ProductCard 
           shoes={shoes[i]} 
           i={i+1} 
-          key={i} 
+          key={i}
+          onClick={() => { navigate(`/detail/${i+1}`) }}
         />
       )
     })
