@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import MyNavbar from "./layouts/MyNavbar";
@@ -19,6 +19,12 @@ export let Context1 = createContext()
 
 
 function App() {
+
+  useEffect(() => {
+    if (!localStorage.getItem('watched')) {
+      localStorage.setItem('watched', JSON.stringify( [] ))
+    }
+  })
 
   let [shoes] = useState(data);
 

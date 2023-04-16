@@ -45,7 +45,15 @@ const Detail = (props) => {
   let [fade, setFade] = useState('');
   let state = useSelector(state => state)
   let dispatch = useDispatch()
-  console.log(state);
+
+  useEffect(() => {
+    let watched = JSON.parse(localStorage.getItem('watched'))
+    watched.push(shoe.id)
+    watched = new Set(watched);
+    watched = Array.from(watched);
+    localStorage.setItem('watched', JSON.stringify(watched));
+
+  }, []);
 
   useEffect(() => {
       setTimeout(() => { setFade('end') }, 100);
@@ -59,7 +67,6 @@ const Detail = (props) => {
   useEffect(() => {
     let b = setTimeout(() => {setAlert(false);}, 5000)
     console.log(1);
-
      // useEffect 안에 있는 코드가 실행되기전에 실행하는 코드
     return () => {
       console.log('useEffect 가 실행되기 전에 실행되는 코드')
