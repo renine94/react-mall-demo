@@ -15,5 +15,4 @@ let user = createSlice({
 });
 
 export let { changeName, addAge } = user.actions
-
 export default user;
